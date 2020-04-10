@@ -1,3 +1,3 @@
-module xgg
+module gee
 
 go 1.14

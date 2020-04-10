@@ -1,21 +1,14 @@
 package main
 
 import (
-	"fmt"
+	"gee/gee"
 	"net/http"
-	"xgg/xgg"
 )
 
 func main() {
-	r := xgg.New()
-	r.GET("/", func(w http.ResponseWriter, req *http.Request) {
-		fmt.Fprintf(w, "URL.Path = %q\n", req.URL.Path)
+	r := gee.New()
+	r.GET("/", func(c *gee.Context) {
+		c.HTML(http.StatusOK, "<h1>hello nice</h1>")
 	})
-	r.GET("/nice", func(w http.ResponseWriter, req *http.Request) {
-		for k, v := range req.Header {
-			fmt.Fprintf(w, "Header[%q] = %q\n", k, v)
-		}
-	})
-
 	r.RUN(":8080")
 }
